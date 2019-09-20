@@ -4,7 +4,6 @@ import { slice } from 'lodash'
 
 function Body ({ columns, data, pageNumber, pageSize, onClick }) {
   const makeCell = (item) => columns && columns.map(column => (
-    // <td data-label={column.dataIndex} style={{ textAlign: column.align || 'left' }} key={column.dataIndex}>{column.render ? column.render(item[column.dataIndex], item) : item[column.dataIndex]}</td>
     <td data-label={column.dataIndex} key={column.dataIndex}>{column.render ? column.render(item[column.dataIndex], item) : item[column.dataIndex]}</td>
   ))
 

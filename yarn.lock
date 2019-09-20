@@ -3829,9 +3829,9 @@ npm-run-path@^2.0.0:
     set-blocking "~2.0.0"
 
 nugo-pagination@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/nugo-pagination/-/nugo-pagination-1.0.0.tgz#ba35ab7874a329179fd7fcb241c966611c9c6887"
-  integrity sha512-5UWXuvmV/0jSsjxl0ctu7SRQRyluRnMvWXHfNyUHNF1qGuAaJjuyFpEc4g2GvHLhVrD9YRPJG2gmQW13HEeeJQ==
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/nugo-pagination/-/nugo-pagination-1.0.1.tgz#881180524c0421d0957712bbb59715075505d00f"
+  integrity sha512-1Qyt2caf7dnElld707YAOaan2/EfvSGbtuix9ZbTuVGgHIGhqsy9y4gEzUMbEgeDIh5wmPZST2xO4Isdi4rcHg==
   dependencies:
     react "^16.9.0"
     react-dom "^16.9.0"
