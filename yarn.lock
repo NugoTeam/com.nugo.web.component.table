@@ -3828,13 +3828,11 @@ npm-run-path@^2.0.0:
     gauge "~2.7.3"
     set-blocking "~2.0.0"
 
-nugo-pagination@^1.0.0:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/nugo-pagination/-/nugo-pagination-1.0.1.tgz#881180524c0421d0957712bbb59715075505d00f"
-  integrity sha512-1Qyt2caf7dnElld707YAOaan2/EfvSGbtuix9ZbTuVGgHIGhqsy9y4gEzUMbEgeDIh5wmPZST2xO4Isdi4rcHg==
+nugo-pagination@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/nugo-pagination/-/nugo-pagination-1.0.2.tgz#34397b2ed7619af19e8ac92aa30777d0354f4cdb"
+  integrity sha512-JwuOxjtt68SwRUZsvizYYwsLFbfkogtBsnUhvb/ykAJtg+stivQlHu+1sm13Zn4Rxv0EEeaKR4Goy2Ffzi7Yog==
   dependencies:
-    react "^16.9.0"
-    react-dom "^16.9.0"
     webpack "^4.40.2"
 
 number-is-nan@^1.0.0:
