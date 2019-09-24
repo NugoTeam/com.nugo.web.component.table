@@ -2,6 +2,7 @@ import babel from 'rollup-plugin-babel'
 import pkg from './package.json'
 import reactSvg from 'rollup-plugin-react-svg'
 import scss from 'rollup-plugin-scss'
+import sass from 'rollup-plugin-sass'
 
 export default {
   input: 'src/index.jsx',
@@ -34,6 +35,11 @@ export default {
       include: null,
       exclude: null
     }),
-    scss()
+    scss({
+      failOnError: true
+    }),
+    sass({
+      insert: true
+    })
   ]
 }
