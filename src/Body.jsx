@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { slice } from 'lodash'
+import slice from 'lodash.slice'
 
 function Body ({ columns, data, pageNumber, pageSize, onClick }) {
   const makeCell = (item) => columns && columns.map(column => (

@@ -5,7 +5,7 @@ import {
 } from 'semantic-ui-react'
 import CsvDownload from 'react-json-to-csv'
 import PropTypes from 'prop-types'
-import { isEmpty, isArray } from 'lodash'
+import isEmpty from 'lodash.isempty'
 import downloadImage from './assets/images/download.svg'
 import filterImage from './assets/images/filter.svg'
 import searchImage from './assets/images/search.svg'
@@ -49,7 +49,7 @@ function ResponsiveTable ({ columns, data, title, searchKey = 'name', searchPlac
     }
 
     var pattern = new RegExp('(' + value.replace(/[^\w\s]/gi, '') + ')', 'i')
-    if (isArray(searchKey)) {
+    if (searchKey.isArray()) {
       dataTemp = dataTemp.filter((item) => {
         const temp = []
         searchKey.map((key) => {
