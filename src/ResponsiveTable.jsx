@@ -6,9 +6,9 @@ import {
 import CsvDownload from 'react-json-to-csv'
 import PropTypes from 'prop-types'
 import isEmpty from 'lodash.isempty'
-import downloadImage from './assets/images/download.svg'
-import filterImage from './assets/images/filter.svg'
-import searchImage from './assets/images/search.svg'
+import downloadImage from './assets/images/download.png'
+import filterImage from './assets/images/filter.png'
+import searchImage from './assets/images/search.png'
 import { formatNumber } from './utils/Helpers'
 import Header from './Header.jsx'
 import Body from './Body.jsx'
@@ -18,8 +18,8 @@ import './Fonts.css'
 import './ResponsiveTable.scss'
 
 const mapSizesToProps = ({ width }) => ({
-  isMobile: width < 480,
-  isTablet: width >= 480 && width <= 991,
+  isMobile: width < 767,
+  isTablet: width >= 767 && width <= 991,
   isDesktop: width > 991
 })
 
@@ -49,7 +49,7 @@ function ResponsiveTable ({ columns, data, title, searchKey = 'name', searchPlac
     }
 
     var pattern = new RegExp('(' + value.replace(/[^\w\s]/gi, '') + ')', 'i')
-    if (searchKey.isArray()) {
+    if (Array.isArray(searchKey)) {
       dataTemp = dataTemp.filter((item) => {
         const temp = []
         searchKey.map((key) => {
@@ -129,65 +129,66 @@ function ResponsiveTable ({ columns, data, title, searchKey = 'name', searchPlac
     setDataFiltered([...data])
   }, [data])
 
-  const makeFilters = () => (
-    <Grid columns="equal" textAlign="left" className="tableFilter">
-      <Grid.Column mobile={16} tablet={6} computer={8} className="title">{`${title} (${!isEmpty(dataFiltered) ? formatNumber(dataFiltered.length, 0) : 0})`}</Grid.Column>
-      <Grid.Column only="tablet computer">
-        <Input
-          icon
-          placeholder={searchPlaceholder}
-          className={`searchField ${!searchFieldVisibility && 'hide'}`}
-          onChange={handleChangeFilter}
-        >
-          <input ref={inputSearchField} />
-          <Icon name='search' />
-          <Icon
-            name='delete'
-            className={`${(inputSearchField && inputSearchField.current && inputSearchField.current.value) ? 'link' : 'link hide'}`}
-            onClick={handlerClearSearchField}
-          />
-        </Input>
-        <div className={`icon ${searchFieldVisibility && 'hide'}`} name="searchIcon">
-          <Image src={searchImage} className="searchIcon" name="searchIconImage" />
-        </div>
-        <div className="icon">
-          <Image src={filterImage} className="filterIcon" />
-        </div>
-        <CsvDownload data={dataFiltered} filename="lista.csv" className="downloadIcon">
-          <div className="icon">
-            <Image src={downloadImage} />
-          </div>
-        </CsvDownload>
-      </Grid.Column>
-      <Grid.Column only="mobile" textAlign="left">
-        <div className="icon filterIcon">
-          <Image src={filterImage} className="filterIcon" />
-        </div>
-        <CsvDownload data={dataFiltered} filename="lista.csv" className="downloadIcon">
-          <div className="icon">
-            <Image src={downloadImage} />
-          </div>
-        </CsvDownload>
-        <Input
-          icon
-          placeholder={searchPlaceholder}
-          className={`searchField ${!searchFieldVisibility && 'hide'}`}
-          onChange={handleChangeFilter}
-        >
-          <input ref={inputSearchField} />
-          <Icon name='search' />
-          <Icon
-            name='delete'
-            className={`${(inputSearchField && inputSearchField.current && inputSearchField.current.value) ? 'link' : 'link hide'}`}
-            onClick={handlerClearSearchField}
-          />
-        </Input>
-        <div className={`icon ${searchFieldVisibility && 'hide'}`} name="searchIcon">
-          <Image src={searchImage} className="searchIcon" name="searchIconImage" />
-        </div>
-      </Grid.Column>
-    </Grid>
+  const inputRender = (
+    <Input
+      icon
+      placeholder={searchPlaceholder}
+      className={`searchField ${!searchFieldVisibility && 'hide'}`}
+      onChange={handleChangeFilter}
+    >
+      <input ref={inputSearchField} />
+      <Icon name='search' />
+      <Icon
+        name='delete'
+        className={`${(inputSearchField && inputSearchField.current && inputSearchField.current.value) ? 'link' : 'link hide'}`}
+        onClick={handlerClearSearchField}
+      />
+    </Input>
   )
+
+  const makeFilters = () => {
+    if (isMobile) {
+      return (
+        <Grid columns="equal" textAlign="left" className="tableFilter">
+          <Grid.Column mobile={16} tablet={6} computer={8} className="title">{`${title} (${!isEmpty(dataFiltered) ? formatNumber(dataFiltered.length, 0) : 0})`}</Grid.Column>
+          <Grid.Column textAlign="left">
+            <div className="icon filterIcon">
+              <Image src={filterImage} className="filterIcon" />
+            </div>
+            <CsvDownload data={dataFiltered} filename="lista.csv" className="downloadIcon">
+              <div className="icon">
+                <Image src={downloadImage} />
+              </div>
+            </CsvDownload>
+            {inputRender}
+            <div className={`icon ${searchFieldVisibility && 'hide'}`} name="searchIcon">
+              <Image src={searchImage} className="searchIcon" name="searchIconImage" />
+            </div>
+          </Grid.Column>
+        </Grid>
+      )
+    } else {
+      return (
+        <Grid columns="equal" textAlign="left" className="tableFilter">
+          <Grid.Column mobile={16} tablet={6} computer={8} className="title">{`${title} (${!isEmpty(dataFiltered) ? formatNumber(dataFiltered.length, 0) : 0})`}</Grid.Column>
+          <Grid.Column>
+            {inputRender}
+            <div className={`icon ${searchFieldVisibility && 'hide'}`} name="searchIcon">
+              <Image src={searchImage} className="searchIcon" name="searchIconImage" />
+            </div>
+            <div className="icon">
+              <Image src={filterImage} className="filterIcon" />
+            </div>
+            <CsvDownload data={dataFiltered} filename="lista.csv" className="downloadIcon">
+              <div className="icon">
+                <Image src={downloadImage} />
+              </div>
+            </CsvDownload>
+          </Grid.Column>
+        </Grid>
+      )
+    }
+  }
 
   const makeTable = () => {
     if (isEmpty(dataFiltered)) {

@@ -1,8 +1,8 @@
 import babel from 'rollup-plugin-babel'
-import pkg from './package.json'
-import reactSvg from 'rollup-plugin-react-svg'
 import scss from 'rollup-plugin-scss'
 import sass from 'rollup-plugin-sass'
+import image from 'rollup-plugin-img'
+import pkg from './package.json'
 
 export default {
   input: 'src/index.jsx',
@@ -26,20 +26,14 @@ export default {
       exclude: 'node_modules/**',
       extensions: ['.js', '.jsx', '.ts', '.tsx']
     }),
-    reactSvg({
-      svgo: {
-        plugins: [], // passed to svgo
-        multipass: true
-      },
-      jsx: false,
-      include: null,
-      exclude: null
-    }),
     scss({
       failOnError: true
     }),
     sass({
       insert: true
+    }),
+    image({
+      limit: 10000
     })
   ]
 }

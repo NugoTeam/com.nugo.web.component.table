@@ -1,6 +1,6 @@
 {
   "name": "nugo-responsive-table",
-  "version": "1.1.4",
+  "version": "1.1.10",
   "repository": "https://github.com/egisberto/nugo-responsive-table.git",
   "description": "Nugo default responsive table component",
   "main": "dist/index.js",
@@ -22,7 +22,7 @@
   "scripts": {
     "clean": "rm -rf dist",
     "build": "rollup -c",
-    "prepublish": "yarn clean && yarn build"
+    "prepare": "yarn clean && yarn build"
   },
   "dependencies": {
     "lodash.isempty": "^4.4.0",
@@ -58,7 +58,7 @@
     "react-sizes": "^2.0.0",
     "rollup": "^1.21.4",
     "rollup-plugin-babel": "^4.3.3",
-    "rollup-plugin-react-svg": "^3.0.3",
+    "rollup-plugin-img": "^1.1.0",
     "rollup-plugin-sass": "^1.2.2",
     "rollup-plugin-scss": "^1.0.2",
     "sass-loader": "^8.0.0",
