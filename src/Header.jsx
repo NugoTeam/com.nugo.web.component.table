@@ -38,13 +38,13 @@ function Header ({ columns, sortOrderHandler, isMobile }) {
       <th
         scope="col"
         key={column.dataIndex}
-        style={{ width: isMobile && column.mobileWidth }}
+        style={{ width: isMobile ? column.mobileWidth : column.width && column.width }}
         className={column.dataIndex === activeColumn ? 'active' : ''}
       >
         <div onClick={() => handleSortClick(column.dataIndex)}>
           <Fragment>
-            {sortIcon}
             {columnTitle}
+            {sortIcon}
           </Fragment>
         </div>
       </th>
