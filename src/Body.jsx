@@ -10,7 +10,7 @@ function Body ({ columns, data, pageNumber, pageSize, onClick }) {
   const make = () => data && slice(data, (pageNumber - 1) * pageSize, (pageNumber - 1) * pageSize + pageSize).map(item => {
     if (typeof onClick === 'function') {
       return (
-        <tr key={item.id} onClick={() => (onClick(item))} style={{ cursor: 'pointer' }}>
+        <tr key={item.id} onClick={(event) => (onClick(event, item))} style={{ cursor: 'pointer' }}>
           {makeCell(item)}
         </tr>
       )

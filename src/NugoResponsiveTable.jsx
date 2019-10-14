@@ -15,7 +15,7 @@ import Body from './Body.jsx'
 import Pagination from 'nugo-pagination'
 import 'semantic-ui-css/semantic.min.css'
 import './Fonts.css'
-import './ResponsiveTable.scss'
+import './NugoResponsiveTable.scss'
 
 const mapSizesToProps = ({ width }) => ({
   isMobile: width < 767,
