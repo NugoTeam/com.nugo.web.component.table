@@ -1,1 +1,1 @@
-export { default } from './ResponsiveTable.jsx'
+export { default } from './NugoResponsiveTable.jsx'

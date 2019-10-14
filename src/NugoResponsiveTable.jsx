@@ -23,7 +23,7 @@ const mapSizesToProps = ({ width }) => ({
   isDesktop: width > 991
 })
 
-function ResponsiveTable ({ columns, data, title, searchKey = 'name', searchPlaceholder, ...rest }) {
+function NugoResponsiveTable ({ columns, data, title, searchKey = 'name', searchPlaceholder, ...rest }) {
   const [dataFiltered, setDataFiltered] = useState([])
   const [searchFieldVisibility, setSearchFieldVisibility] = useState(false)
   const [pageNumber, setPageNumber] = useState(1)
@@ -197,7 +197,7 @@ function ResponsiveTable ({ columns, data, title, searchKey = 'name', searchPlac
     }
 
     return (
-      <table className="responsiveTable">
+      <table className="nugoResponsiveTable">
         <Header columns={isMobile ? mobileColumns : columns} sortOrderHandler={handleSortOrder} isMobile={isMobile} />
         <Body
           columns={isMobile ? mobileColumns : columns}
@@ -241,7 +241,7 @@ function ResponsiveTable ({ columns, data, title, searchKey = 'name', searchPlac
   )
 }
 
-ResponsiveTable.propTypes = {
+NugoResponsiveTable.propTypes = {
   columns: PropTypes.arrayOf(PropTypes.any).isRequired,
   data: PropTypes.arrayOf(PropTypes.any).isRequired,
   title: PropTypes.string.isRequired,
@@ -252,4 +252,4 @@ ResponsiveTable.propTypes = {
   searchPlaceholder: PropTypes.string.isRequired
 }
 
-export default withSizes(mapSizesToProps)(ResponsiveTable)
+export default withSizes(mapSizesToProps)(NugoResponsiveTable)
