@@ -33,7 +33,7 @@ function Header ({ columns, sortOrderHandler, isMobile }) {
 
   const make = () => columns && columns.map(column => {
     const columnTitle = (typeof column.title === 'function') ? column.title() : column.title
-    const sortIcon = (column.dataIndex === activeColumn) && (sortOrder === 'descend' ? <Icon name='angle down' size='large' /> : <Icon name='angle up' size='large' />)
+    const sortIcon = (column.dataIndex === activeColumn) ? (sortOrder === 'descend' ? <Icon name='angle down' size='large' /> : <Icon name='angle up' size='large' />) : <Icon name='angle down' size='large' />
     return (
       <th
         scope="col"

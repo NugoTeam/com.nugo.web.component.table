@@ -36,14 +36,12 @@ table {
     letter-spacing: 1.05px;
     color: rgba(51, 51, 51, 0.38);
     vertical-align: middle;
+
     div {
       cursor: pointer;
     }
     &.active {
       color: $colorBlack;
-    }
-    .icon {
-      float: left;
     }
   }
   td {
