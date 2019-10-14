@@ -28,6 +28,7 @@ function ResponsiveTable ({ columns, data, title, searchKey = 'name', searchPlac
   const [searchFieldVisibility, setSearchFieldVisibility] = useState(false)
   const [pageNumber, setPageNumber] = useState(1)
   const inputSearchField = useRef(null)
+  const tableHeader = useRef(null)
   const { pageSize, isMobile, isTablet, onRowClick } = rest
 
   const [responsivePagination, setResponsivePagination] = useState(pageSize)
@@ -161,7 +162,7 @@ function ResponsiveTable ({ columns, data, title, searchKey = 'name', searchPlac
               </div>
             </CsvDownload>
             {inputRender}
-            <div className={`icon ${searchFieldVisibility && 'hide'}`} name="searchIcon">
+            <div className={`icon searchIcon ${searchFieldVisibility && 'hide'}`} name="searchIcon">
               <Image src={searchImage} className="searchIcon" name="searchIconImage" />
             </div>
           </Grid.Column>
@@ -173,7 +174,7 @@ function ResponsiveTable ({ columns, data, title, searchKey = 'name', searchPlac
           <Grid.Column mobile={16} tablet={6} computer={8} className="title">{`${title} (${!isEmpty(dataFiltered) ? formatNumber(dataFiltered.length, 0) : 0})`}</Grid.Column>
           <Grid.Column>
             {inputRender}
-            <div className={`icon ${searchFieldVisibility && 'hide'}`} name="searchIcon">
+            <div className={`icon searchIcon ${searchFieldVisibility && 'hide'}`} name="searchIcon">
               <Image src={searchImage} className="searchIcon" name="searchIconImage" />
             </div>
             <div className="icon">
@@ -209,7 +210,10 @@ function ResponsiveTable ({ columns, data, title, searchKey = 'name', searchPlac
     )
   }
 
-  const handlePageChange = ({ currentPage }) => setPageNumber(Math.ceil(currentPage))
+  const handlePageChange = ({ currentPage }) => {
+    setPageNumber(Math.ceil(currentPage))
+    tableHeader.current.scrollIntoView({ behavior: 'smooth' })
+  }
 
   const makePagination = () => {
     if (isEmpty(dataFiltered)) {
@@ -230,7 +234,7 @@ function ResponsiveTable ({ columns, data, title, searchKey = 'name', searchPlac
 
   return (
     <Fragment>
-      {makeFilters()}
+      <div ref={tableHeader}>{makeFilters()}</div>
       {makeTable()}
       {makePagination()}
     </Fragment>

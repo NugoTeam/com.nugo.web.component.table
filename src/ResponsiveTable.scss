@@ -110,6 +110,10 @@ table {
     .delete.icon {
       color: #000;
       right: 0;
+      display: none;
+      &::before {
+        content: none;
+      }
     }
   }
   .icon {
@@ -135,17 +139,6 @@ table {
     cursor: pointer;
   }
 }
-
-// @media only screen and (max-width: 991px) {
-//   .tableFilter .title {
-//     font-size: 14px;
-//     font-weight: 500;
-//     font-style: normal;
-//     font-stretch: normal;
-//     line-height: normal;
-//     letter-spacing: -0.21px;
-//   }
-// }
 
 @media only screen and (max-width: 767px) {
   .tableFilter {
@@ -173,6 +166,10 @@ table {
       float: left;
       width: 210px;
       height: 24px;
+      margin-left: 16px;
+    }
+    .searchIcon {
+      margin-left: 12px;
     }
   }
   .responsiveTable {
