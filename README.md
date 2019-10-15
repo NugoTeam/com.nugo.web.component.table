@@ -2,7 +2,7 @@ Nugo Responsive Table
 ===================
 This repository contains the nugo-responsive-table package.
 
-![API Version](https://img.shields.io/badge/version-1.1.16-brightgreen.svg)
+![API Version](https://img.shields.io/badge/version-1.1.17-brightgreen.svg)
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 ## Instalation
